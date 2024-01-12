@@ -111,20 +111,6 @@ router.get("/githubcallback",
 router.get(
   '/current', privateRoutes,
   async (req, res) => {
-    const objectId_ = req.user.cart[0]._id;
-
-    // Extract the hexadecimal representation
-    const hexString = objectId_.toHexString();
-
-    // const dtouser = {
-    //   _id: req.user._id,
-    //   firstname: req.user.firstname,
-    //   lastname: req.user.lastname,
-    //   age: req.user.age,
-    //   email: req.user.email,
-    //   cart: hexString,
-    //   role: req.user.role,
-    // }
 
     const dtouser = userdto.getUserInputFrom(req.user)
 

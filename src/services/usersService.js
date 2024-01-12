@@ -1,10 +1,10 @@
-
 import { userModel } from '../dao/models/user.model.js';
 import { productsModel } from '../dao/models/products.model.js';
 import { logger } from '../utils/logger.js';
 import fs from 'fs/promises';
 import path from 'path';
 import __dirname from '../utils.js';
+import userdto from '../dto/userdto.js'
 export default class usersService {
 
     async changeRol(uid) {
@@ -41,12 +41,12 @@ export default class usersService {
     async verifyUserDocumentation(uid) {
         try {
             let swbool = 0
-            
+
             const user = await userModel.find({ _id: uid });
 
             if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro el usuario en base de datos.`;
 
-            if(user[0].role == "Premium"){
+            if (user[0].role == "Premium") {
                 console.log("entro en preimum golden tickect")
                 return `SUC|` + 'Posee todos los documentos para cambiarse el rol'
             }
@@ -191,6 +191,38 @@ export default class usersService {
 
         if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro el usuario en base de datos.`;
         return user
+    }
+
+    async obtainusers() {
+        var newListUser = []
+        let user = await userModel.find();
+
+        if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro ningun usuario en base de datos.`;
+
+        user.forEach(a => {
+
+            console.log(a.firstname)
+            let dtouser = userdto.getUserInputFrom(a)
+            newListUser.push(dtouser)
+        })
+
+        return newListUser
+    }
+    
+    async deleteUsersLateConn() {
+        
+        let user = await userModel.find();
+
+        if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro ningun usuario en base de datos.`;
+
+        user.forEach(a => {
+
+            console.log(a.firstname)
+            let dtouser = userdto.getUserInputFrom(a)
+            newListUser.push(dtouser)
+        })
+
+        return newListUser
     }
 
     async updateUserDocuments(uid) {

@@ -2,6 +2,8 @@ import Router from "express"
 import {
   changeRol,
   uploadFile,
+  obtainUsers,
+  deleteUsersLateConn
 } from "../controller/userController.js";
 import { uploader } from "../middlewares/multer.js";
 
@@ -32,6 +34,8 @@ const UserRouter = Router();
 // };
 // UserRouter.use(myMiddleware)
 
+UserRouter.get('/', obtainUsers)
+UserRouter.delete('/', deleteUsersLateConn)
 UserRouter.get('/premium/:uid', changeRol)
 UserRouter.post('/:uid/profileFile/documents', uploader.single('profileFile'), uploadFile)
 UserRouter.post('/:uid/IDFile/documents', uploader.single('IDFile'), uploadFile)

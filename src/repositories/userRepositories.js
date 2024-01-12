@@ -18,6 +18,33 @@ class usersRepositories {
     }
   }
 
+
+  async deleteUsersLateConn() {
+    try {
+
+      let answer = await UserService.deleteUsersLateConn()
+      // console.log("answer " + answer)
+      return answer
+
+    } catch (error) {
+      logger.error("Error en userRepositories/deleteUsersLateConn: " + error)
+      return `ERR|Error generico. Descripcion :${error}`
+    }
+  }
+
+  async obtainusers() {
+    try {
+
+      let answer = await UserService.obtainusers()
+      // console.log("answer " + answer)
+      return answer
+
+    } catch (error) {
+      logger.error("Error en userRepositories/obtainusers: " + error)
+      return `ERR|Error generico. Descripcion :${error}`
+    }
+  }
+
   async verifyUserDocumentation(uid) {
     try {
 
@@ -28,6 +55,27 @@ class usersRepositories {
       logger.error("Error en userRepositories/changeRol: " + error)
       return `ERR|Error generico. Descripcion :${error}`
     }
+  }
+
+  async deleteUsersLateConn() {
+
+    const tenMinutesInMilliseconds = 10 * 60 * 1000; // 10 minutes in milliseconds
+
+    // const time = Date.now();
+    const timenew = new Date();
+
+    // console.log(time)
+    console.log(timenew)
+    // const nowtime = time / 1000;
+    // console.log(nowtime)
+
+    if (timenew >= tenMinutesInMilliseconds) {
+      console.log("Half an hour has passed!");
+    } else {
+      // setTimeout(checkTime, 1000); // Check again in 1 second
+    }
+
+
   }
 
 

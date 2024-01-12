@@ -97,6 +97,62 @@ export const uploadFile = async (req, res) => {
     }
 }
 
+export const obtainUsers = async (req, res) => {
+
+    try {
+        console.log(" userController/uploadFile")
+
+        let answer = await UsersManager.obtainusers()
+        // console.log("answer")
+        // console.log(answer)
+
+        // const arrayAnswer = ManageAnswer(answer)
+
+        // req.session.user.role = arrayAnswer[1]
+
+        // res.redirect("/UploaderView")
+        res.send(answer)
+
+    } catch (error) {
+        logger.error("Error en userController/obtainUsers: " + error)
+        return swWeb ? error : res.status(500).send({
+            status: "500",
+            message: `Se ha arrojado una exepcion: error`
+        })
+    }
+}
+
+export const deleteUsersLateConn = async (req, res) => {
+
+    try {
+        console.log(" userController/deleteUsersLateConn")
+
+        let answer = await UsersManager.deleteUsersLateConn()
+        // console.log("answer")
+        // console.log(answer)
+
+        // const arrayAnswer = ManageAnswer(answer)
+
+        // req.session.user.role = arrayAnswer[1]
+
+        // res.redirect("/UploaderView")
+        res.send(answer)
+
+    } catch (error) {
+        logger.error("Error en userController/obtainUsers: " + error)
+        // return swWeb ? error : res.status(500).deleteUsersLateConn({
+        //     status: "500",
+        //     message: `Se ha arrojado una exepcion: error`
+        // })
+        return res.status(500).send({
+            status: "500",
+            message: `Se ha arrojado una exepcion: error`
+        })
+
+    }
+}
+
+
 
 
 

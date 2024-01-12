@@ -2,3 +2,22 @@ error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
 2023-11-26T19:24:05.047Z [logs] error: error
 2023-11-26T19:27:05.054Z [logs] error: error
 2024-01-07T23:10:29.926Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-12T01:07:19.762Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: userdto is not defined
+2024-01-12T01:07:59.541Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: req is not defined
+2024-01-12T01:09:52.012Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: req is not defined
+2024-01-12T01:12:10.117Z [logs] error: Error en userRepositories/obtainusers: TypeError: Assignment to constant variable.
+2024-01-12T01:14:25.404Z [logs] error: Error en userRepositories/obtainusers: TypeError: Assignment to constant variable.
+2024-01-12T01:15:32.490Z [logs] error: Error en userRepositories/obtainusers: TypeError: Assignment to constant variable.
+2024-01-12T01:16:18.842Z [logs] error: Error en userRepositories/obtainusers: TypeError: Assignment to constant variable.
+2024-01-12T01:16:55.808Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: obtainusers is not defined
+2024-01-12T01:18:04.971Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: obtainusers is not defined
+2024-01-12T01:19:18.531Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: obtainusers is not defined
+2024-01-12T01:20:13.958Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: obtainusers is not defined
+2024-01-12T01:20:55.743Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: obtainusers is not defined
+2024-01-12T01:28:17.855Z [logs] error: Error en userRepositories/obtainusers: ReferenceError: obtainusers is not defined
+2024-01-12T01:49:58.340Z [logs] error: Error en userController/obtainUsers: TypeError: UsersManager.deleteUsersLateConn is not a function
+2024-01-12T02:02:16.423Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined
+2024-01-12T02:03:31.702Z [logs] error: Error en userController/obtainUsers: ReferenceError: time is not defined
+2024-01-12T02:03:55.445Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined
+2024-01-12T02:05:09.340Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined
+2024-01-12T02:05:51.996Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined

@@ -14,6 +14,13 @@ class UserManager {
   async uploadFile(uid) {
     return await UserRepositories.uploadFile(uid);
   }
+  async obtainusers() {
+    return await UserRepositories.obtainusers();
+  }
+   async deleteUsersLateConn() {
+    return await UserRepositories.deleteUsersLateConn();
+  }
+  
 }
 
 export default UserManager
