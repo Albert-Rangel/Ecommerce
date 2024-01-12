@@ -1,0 +1,32 @@
+<div id="carta">
+    <p>
+        Cart Id :{{cid}}
+    </p>
+    <a href="/api/carts/cartPurchase" class="boton">
+        Buy your products
+    </a>
+    
+    <a href="http://localhost:8080/products" class="boton">Return to Main Catalog</a>
+
+</div>
+
+<div class="form-container">
+    <div>
+        {{#each allProducts}}
+        <div class="card">
+            <img src="{{this.id.thumbnail}}" alt="..." class="images">
+            <div class="card-body">
+                Title: {{this.id.title}} </br>
+                Id: {{this.id._id}} </br>
+                Price per unit: {{this.id.price}} </br>
+                {{!-- Total Price: {{this.id.price * this.quantity}}</br> --}}
+                Description : {{this.id.description}} </br>
+                Code:{{this.id.code}}</br>
+                Status:{{this.id.status}}</br>
+                Category: {{this.id.category}}</br>
+                Quantity: {{this.quantity}}</br>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

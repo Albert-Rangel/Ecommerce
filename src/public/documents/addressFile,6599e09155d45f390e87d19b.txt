@@ -1,0 +1,94 @@
+xIF4BeCQ7kPbWOFK
+albertsleyther
+
+-------------------
+albertto71
+WwtuyUvrpVbqG622
+
+
+OUTLOOK
+mongodb+srv://albertto71:<password>@cluster0.yk9l1lt.mongodb.net/?retryWrites=true&w=majority
+
+
+
+----------------------------------------------------------
+
+mongodb+srv://albertsleyther:<password>@cluster0.m581fsg.mongodb.net/?retryWrites=true&w=majority
+
+mongodb+srv://albertsleyther:09NbqGe9gecOLTBy@ecommerce.6lrddnh.mongodb.net/?retryWrites=true&w=majority este si funciona
+
+https://discord.com/invite/WdaVMpzj/login
+
+ecommerce
+
+09NbqGe9gecOLTBy
+
+
+
+Owned by: @Albert-Rangel
+
+App ID: 404566
+
+Client ID: Iv1.abfb4e2fbb512adf
+
+Github App Name :Auth3rdPartyWgh
+
+Client Secret in gith hub AUTHENTICATION, IMPORTANT, 5cebb1e4cedf69bf9dfbab76082420b4d62d0b17
+
+callbackurl: http://localhost:8080/api/githubcallback
+
+usuario administrador: adminCoder@coder.com
+password administradora: adminCod3r123
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ETHEREAL
+
+
+Name	Claudie Funk
+Username	claudie.funk69@ethereal.email
+Password	77VaKZY8tzXPWsqQuK
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+
+https://github.com/BrunoRealan/Back-End_Project/tree/main
+
+https://github.com/jlvilasoler/entrega-back/tree/main
+
+https://github.com/PabloGaleano88/Desafioclase24_Galeano
+
+
+
+https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe
+
+clean code
+
+https://refactoring.guru/es
+
+clen architecture
+
+https://reactiveprogramming.io/blog/es/patrones-arquitectonicos/dto
+
+https://reactiveprogramming.io/blog/es/patrones-arquitectonicos/dao
+
+
+
+https://github.com/CoderContenidos/RecursosBackend-Artillery
+
+https://curl.se/download.html
+
+https://github.com/winstonjs/winston#multiple-transports-of-the-same-type
+
+
+https://github.com/sholugs/Integrador3/tree/main
+
+claudie.funk69@ethereal.email
+
+https://github.com/CoderContenidos/RecursosBackend-Adoptme
+
+
+
+
+
+
+

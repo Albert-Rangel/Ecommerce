@@ -1,0 +1,293 @@
+paths:
+  /api/carts:
+    get:
+      summary: Obtiene todos los carros
+      tags: 
+        - Carts
+      responses: 
+        "200":
+          description: Los carros fueron obtenidos satisfactoriamente desde la bd. 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Carts'
+        "500":
+          description: Algo fallo en la busqueda de los carros desde la bd
+    post:
+      summary: Crea un carro sin productos      
+      tags: 
+        - Carts
+      responses: 
+        "200":
+          description: El carro fue creado exitosamente en la bd. 
+        "500":
+          description: Algo fallo en la creacion de carro desde la bd
+  /api/carts/byId/{cid}: 
+    get:
+      summary: Obtiene un carro segun su id
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro a buscar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Productos encontrados
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Carts'
+  /api/carts/CartProd/{cid}:
+    get:
+      summary: Obtiene todos los productos de un carro segun su id
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro a buscar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Productos encontrados
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Carts'
+  /api/carts/{cid}/purchase:
+    get:
+      summary: Realiza la generacion de un ticket para completar el proceso de compra
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro a buscar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Carro encontrado
+  /api/carts/SpecificCart/{cid}:
+    delete:
+      summary: Elimina un carro en especifico
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro a eliminar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Carro encontrado
+  /api/carts/{cid}:
+    delete:
+      summary: Elimina todos los productos de un carro en especifico
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro del cual se desea eliminar todos sus productos
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Carro encontrado
+  /api/carts/{cid}/product/{pid}:
+    put:
+      summary: Actualiza el Quantity de un producto especifico en un carro especifico
+      tags: 
+        - Carts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateQuantity'
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro 
+        schema:
+          $type: String
+      - name : pid
+        in: path
+        required: true
+        description: id del producto al cual se debe actualizar su cantidad
+        schema:
+          $type: String
+      responses: 
+        "200":
+          description: El producto fue modificado exitosamente
+        "500":
+          description: Algo fallo en la modificacion del producto desde la bd
+    post:
+      summary: Agrega un producto especifico a un carro especifico
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro a agregar
+        schema:
+          $type: String
+      - name : pid
+        in: path
+        required: true
+        description: id del producto a agregar
+        schema:
+          $type: String
+      - in: query
+        name: uid
+        schema:
+          type: String
+        description: el id del usuario
+      responses:
+        "200":
+          description: Carro encontrado
+    delete:
+      summary: Elimina o resta un producto especifico a un carro especifico
+      tags: 
+        - Carts
+      parameters:
+      - name : cid
+        in: path
+        required: true
+        description: id del carro 
+        schema:
+          $type: String
+      - name : pid
+        in: path
+        required: true
+        description: id del producto a eliminar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Carro encontrado
+components:
+  schemas:
+    Carts:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        products:
+          type: array
+          items:
+            $ref: '#components/schemas/Products'
+      example:
+        _id: 656f373d61740b17ec638d66
+        title: Cellphone
+        description: Black Cellphone
+        price: 150
+        thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fire_Phone.jpg/1200px-Fire_Phone.jpg
+        code: a1a2a3
+        stock: 10
+        status: true
+        category: Technology
+        owner: adminCoder@coder.com
+        __v: 0
+    Products:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Monto del Producto
+        thumbnail:
+          type: String
+          description: URL de la imagen del producto. 
+        code:
+          type: String
+          description: Codigo unico del producto.
+        stock:
+          type: Number
+          description: Cantidad en bd del producto.
+        status:
+          type: Boolean
+          description: Status del producto.
+        category:
+          type: String
+          description: Categoria del producto.
+        owner:
+          type: String
+          description: Correo del usuario que creo el producto.
+        __v:
+          type: Number
+          description: version en bd.
+  requestBodies:
+    updateProduct:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Monto del Producto
+        thumbnail:
+          type: String
+          description: URL de la imagen del producto. 
+        code:
+          type: String
+          description: Codigo unico del producto.
+        stock:
+          type: Number
+          description: Cantidad en bd del producto.
+        status:
+          type: Boolean
+          description: Status del producto.
+        category:
+          type: String
+          description: Categoria del producto.
+        owner:
+          type: String
+          description: Correo del usuario que creo el producto.
+      example:
+        title: Cellphone
+        description: Black Cellphone
+        price: 150
+        thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fire_Phone.jpg/1200px-Fire_Phone.jpg
+        code: a1a2a3
+        stock: 10
+        status: true
+        category: Technology
+        owner: adminCoder@coder.com
+    updateQuantity:
+      type: Object
+      properties:
+        quantity:
+          type: Number
+          description: Cantidad que deses que su producto tenga
+      example:
+        quantity: 5
+

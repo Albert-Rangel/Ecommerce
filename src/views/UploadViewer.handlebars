@@ -1,0 +1,167 @@
+<style>
+    /* General form styling */
+    form {
+        background-color: #f5f5f5;
+        /* Light gray background */
+        padding: 20px;
+        border-radius: 5px;
+        /* Soft rounded corners */
+        margin-bottom: 20px;
+        /* Space between forms */
+    }
+
+    /* Label styling */
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    /* Input and button styling */
+    input[type="file"],
+
+    button {
+        ;
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #289bb8;
+        font-size: 16px;
+        text-decoration: none;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 15px;
+        letter-spacing: 2px
+    }
+
+    button:hover {
+        background: #289bb8;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #289bb8,
+            0 0 25px #289bb8,
+            0 0 50px #289bb8,
+            0 0 100px #289bb8;
+    }
+
+    #carta {
+        margin: 0 auto;
+        padding: 25px;
+        font-size: 22px;
+        border-radius: 25px;
+        background-color: white;
+        box-shadow: 5px 5px 40px black;
+        text-align: center;
+        width: 400px;
+
+    }
+
+    #carta img {
+        border-radius: 25px;
+        box-shadow: 5px 5px 4px gray;
+        transition: 1s;
+    }
+
+    #carta img:hover {
+        filter: invert(100%);
+    }
+
+    #carta p {
+        text-align: justify;
+    }
+
+    #carta .boton {
+        text-decoration: none;
+        margin: 20px;
+        padding: 2px 20px;
+        border-radius: 20px;
+        border: solid tomato 2px;
+        color: black;
+        box-shadow: 2px 2px 2px gray;
+        display: block;
+        transition: .5s;
+    }
+
+    #carta .boton:hover {
+        background-color: tomato;
+    }
+
+    #carta #cerrar {
+        text-decoration: none;
+        color: red;
+        border: solid red 1px;
+        padding: 5px;
+        border-radius: 8px;
+    }
+
+    #carta #description:not(:target) {
+        display: none;
+    }
+
+    #carta #description:target {
+        display: block;
+    }
+</style>
+
+<div id="carta" title="Upload Section">
+    <img src="https://i.pinimg.com/originals/66/79/b6/6679b67c5fb579305d74dadd2029441c.jpg" width="300px">
+
+    <h1>Datos personales : {{firstname}} {{lastname}} </h1>
+    <p>
+        Email : {{email_}}
+    </p>
+
+    <p>
+        Age : {{age}}
+    </p>
+    <p>
+        UserId : {{uid}}
+    </p>
+    <p id="idrole">
+        Role : {{role}}
+    </p>
+    <p>
+        Cartid : {{cart}}
+    </p>
+    <a href="/logout" class="boton">
+        LogOut
+    </a>
+    <a href="http://localhost:8080/products" class="boton">Return to Main Catalog</a>
+</div>
+
+<div class="forms-container">
+    <form action="http://localhost:8080/api/users/{{uid}}/profileFile/documents" method="post"
+        enctype="multipart/form-data">
+        <label for="profileFile">Imagen de perfil usuario</label>
+        <input type="file" id="profileFile" name="profileFile" accept=".png, .jpg .jpeg .pdf">
+        <button type="submit" value="submit">Enviar foto de perfil</button>
+    </form>
+
+    <form action="http://localhost:8080/api/users/{{uid}}/IDFile/documents" method="post" enctype="multipart/form-data">
+        <label for="IDFile">Imagen de cedula de identidad</label>
+        <input type="file" id="IDFile" name="IDFile" accept=".png, .jpg .jpeg  .pdf">
+        <button type="submit" value="submit">Enviar cedula de identidad</button>
+    </form>
+
+    <form action="http://localhost:8080/api/users/{{uid}}/BankFile/documents" method="post"
+        enctype="multipart/form-data">
+        <label for="BankFile">Imagen de Comprobante bancario</label>
+        <input type="file" id="BankFile" name="BankFile" />
+        <button type="submit" value="submit">Enviar comprobante bancario</button>
+    </form>
+
+    <form action="http://localhost:8080/api/users/{{uid}}/addressFile/documents" method="post"
+        enctype="multipart/form-data">
+        <label for="addressFile">Imagen de comprobante de domicilioo</label>
+        <input type="file" id="addressFile" name="addressFile" />
+        <button type="submit" value="submit">Enviar comprobante de domicilio</button>
+    </form>
+
+
+    <form action="http://localhost:8080/api/users/{{uid}}/productsFile/documents" method="post"
+        enctype="multipart/form-data">
+        <label for="productsFile">Imagen de producto</label>
+        <input type="file" id="productsFile" name="productsFile" accept=".png, .jpg .jpeg  .pdf">
+        <button type="submit" value="submit">Enviar imagen de productoo</button>
+    </form>
+
+</div>

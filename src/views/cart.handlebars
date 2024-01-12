@@ -1,0 +1,16 @@
+
+<a href="/api/carts/cartPurchase" class="boton">
+    Buy your products
+</a>
+
+
+<div class="container-fluid" style="display: inline">
+    <h2>Your Cart</h2>
+    <span id="counter" style="display: block"></span>
+    <div id="catalogo" class="row"></div>
+    <div id="cid" hidden> {{cid}}</div>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/cart.js"></script>

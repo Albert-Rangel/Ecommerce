@@ -1,0 +1,27 @@
+
+<div class="login-page">
+    <div class="avatar">
+        <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg"
+            alt="Avatar">
+    </div>
+    <div class="form">
+        <h2>Login</h2>
+
+        <div class="item-container">
+            <a href="http://localhost:8080/api/github"><i class="fa fa-github" style="font-size: 20px;"></i></a>
+        </div>
+
+        <div class="item-container">
+            <p>or login using this option</p>
+        </div>
+
+        <form action="http://localhost:8080/api/login" method="post">
+            <input id="email"  type="text" placeholder="fulanitodetal@example.com" name="email" >
+            <input   id="password" type="password" placeholder="Password" name="password">
+            <button type="submit">Log in</button>
+        </form>
+        <p class="message">Not registered? <a href="http://localhost:8080/signup">Create an account</a></p>
+        <p class="message">Forgot your password? <a href="http://localhost:8080/recoverSendEmail">Click here to reset it</a>
+        </p>
+    </div>
+</div>

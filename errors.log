@@ -1,0 +1,4 @@
+error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
+2023-11-26T19:24:05.047Z [logs] error: error
+2023-11-26T19:27:05.054Z [logs] error: error
+2024-01-07T23:10:29.926Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms

@@ -1,0 +1,207 @@
+paths:
+  /api/products/Npagin/:
+    get:
+      summary: Obtiene todos los productos
+      tags: 
+        - Products
+      responses: 
+        "200":
+          description: Los productos fueron obtenidos satisfactoriamente desde la bd. Tiene su paginacion
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Products'
+        "500":
+          description: Algo fallo en la busqueda de productos desde la bd
+  /api/products:
+    get:
+      summary: Obtiene todos los productos Paginados
+      tags: 
+        - Products
+      
+      responses: 
+        "200":
+          description: Los productos fueron obtenidos satisfactoriamente desde la bd
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Products'
+        "500":
+          description: Algo fallo en la busqueda de productos desde la bd
+    post:
+      summary: Crea un producto nuevo
+      tags: 
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateProduct'
+      responses: 
+        "200":
+          description: Producto creado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/requestBodies/updateProduct'
+        "500":
+          description: Algo fallo en la creacion del producto desde la bd
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto segun su id
+      tags: 
+        - Products
+      parameters:
+      - name : pid
+        in: path
+        required: true
+        description: id del producto a buscar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Products'
+    put:
+      summary: Actualiza un producto segun su id
+      tags: 
+        - Products
+      parameters:
+      - name : pid
+        in: path
+        required: true
+        description: id del producto a buscar
+        schema:
+          $type: String
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateProduct'
+      responses: 
+        "200":
+          description: El producto fue modificado exitosamente
+        "500":
+          description: Algo fallo en la modificacion del producto desde la bd
+    delete:
+      summary: Elimina un producto segun su id
+      tags: 
+        - Products
+      parameters:
+      - name : pid
+        in: path
+        required: true
+        description: id del producto a elimina
+        schema:
+          $type: String
+      - in: query
+        name: uid
+        schema:
+          type: String
+        description: el id del usuario
+      responses: 
+        "200":
+          description: El producto fue eliminado exitosamente
+        "500":
+          description: Algo fallo en la eliminacion del producto desde la bd
+components:
+  schemas:
+    Products:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Monto del Producto
+        thumbnail:
+          type: String
+          description: URL de la imagen del producto. 
+        code:
+          type: String
+          description: Codigo unico del producto.
+        stock:
+          type: Number
+          description: Cantidad en bd del producto.
+        status:
+          type: Boolean
+          description: Status del producto.
+        category:
+          type: String
+          description: Categoria del producto.
+        owner:
+          type: String
+          description: Correo del usuario que creo el producto.
+        __v:
+          type: Number
+          description: version en bd.
+      example:
+        _id: 656f373d61740b17ec638d66
+        title: Cellphone
+        description: Black Cellphone
+        price: 150
+        thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fire_Phone.jpg/1200px-Fire_Phone.jpg
+        code: a1a2a3
+        stock: 10
+        status: true
+        category: Technology
+        owner: adminCoder@coder.com
+        __v: 0
+  requestBodies:
+    updateProduct:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Monto del Producto
+        thumbnail:
+          type: String
+          description: URL de la imagen del producto. 
+        code:
+          type: String
+          description: Codigo unico del producto.
+        stock:
+          type: Number
+          description: Cantidad en bd del producto.
+        status:
+          type: Boolean
+          description: Status del producto.
+        category:
+          type: String
+          description: Categoria del producto.
+        owner:
+          type: String
+          description: Correo del usuario que creo el producto.
+      example:
+        title: Cellphone
+        description: Black Cellphone
+        price: 150
+        thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fire_Phone.jpg/1200px-Fire_Phone.jpg
+        code: a1a2a3
+        stock: 10
+        status: true
+        category: Technology
+        owner: adminCoder@coder.com

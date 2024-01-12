@@ -1,0 +1,219 @@
+html {
+    background-color: tomato;
+    box-sizing: border-box;
+}
+
+#carta {
+    margin: 0 auto;
+    padding: 25px;
+    font-size: 22px;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 5px 5px 40px black;
+    text-align: center;
+    width: 400px;
+
+}
+
+#carta img {
+    border-radius: 25px;
+    box-shadow: 5px 5px 4px gray;
+    transition: 1s;
+}
+
+#carta img:hover {
+    filter: invert(100%);
+}
+
+#carta p {
+    text-align: justify;
+}
+
+#carta .boton {
+    text-decoration: none;
+    margin: 20px;
+    padding: 2px 20px;
+    border-radius: 20px;
+    border: solid tomato 2px;
+    color: black;
+    box-shadow: 2px 2px 2px gray;
+    display: block;
+    transition: .5s;
+}
+
+#carta .boton:hover {
+    background-color: tomato;
+}
+
+#carta #cerrar {
+    text-decoration: none;
+    color: red;
+    border: solid red 1px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+#carta #description:not(:target) {
+    display: none;
+}
+
+#carta #description:target {
+    display: block;
+}
+
+
+
+#formProduct {
+    width: 40%;
+    background: #04315f;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom:60px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+  }
+  
+  #formProduct h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .controls {
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+  }
+  
+  #formProduct p {
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    display: flex;
+  }
+  #formProduct h2 {
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+  }
+   h2 label{
+    height: 20px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+  }
+  
+  #formProduct a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  #formProduct a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  #formProduct .botons {
+    width: 100%;
+    background: #1f53c5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+  }
+  .general {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 13px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+     
+   }
+  
+   .botons {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #289bb8;
+    font-size: 16px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 15px;
+    letter-spacing: 2px
+  }
+  .botons:hover {
+    background: #289bb8;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #289bb8,
+                0 0 25px #289bb8,
+                0 0 50px #289bb8,
+                0 0 100px #289bb8;
+  }
+  body {
+    background: rgb(238, 174, 202);
+    background: -moz-linear-gradient(138deg, rgba(238, 174, 202, 1) 0%, rgba(35, 159, 245, 1) 100%);
+    background: -webkit-linear-gradient(138deg, rgba(238, 174, 202, 1) 0%, rgba(35, 159, 245, 1) 100%);
+    background: linear-gradient(138deg, rgba(238, 174, 202, 1) 0%, rgba(35, 159, 245, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca", endColorstr="#239ff5", GradientType=1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .card {
+    max-width: 30em;
+    flex-direction: row;
+    background-color: #696969;
+    border: 0;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+    margin: 3em auto;
+  }
+  
+  .card.card.bg-light-subtle .card-title {
+    color: dimgrey;
+  }
+  
+  .card:hover {
+    box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card img {
+    max-width: 80%;
+    margin: auto;
+    padding: 0.5em;
+    border-radius: 0.7em;
+  }
+  
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card.bg-light-subtle .cta-section .btn {
+    background-color: #898989;
+    border-color: #898989;
+  }
+  
+  @media screen and (max-width: 475px) {
+    .card {
+      font-size: 0.9em;
+    }
+  }

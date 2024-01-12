@@ -1,0 +1,38 @@
+<div class="signup-page">
+  <div class="form">
+    <h2>Signup Form</h2>
+    <form action="http://localhost:8080/api/signup" method="post">
+
+      <label for="firstname">First Name </label>
+      <input id="firstname" type="text" placeholder="Albert" name="firstname" required />
+
+
+      <label for="lastname">Last Name </label>
+      <input id="lastname" type="text" placeholder="Rangel" name="lastname" required />
+
+
+      <label for="email">Email </label>
+      <input id="email" type="email" placeholder="fulanitodetal@example.com" name="email" required />
+
+
+      <label for="age">Age </label>
+      <input id="age" type="number" name="age" required />
+
+
+      <label for="password">Password </label>
+      <input id="password" type="password" placeholder="password" name="password"  required />
+
+      {{!-- <button class="btn btn--form" type="submit" value="Registrarse"> --}}
+        <button type="submit">
+          Register
+        </button>
+
+        {{!-- <button onClick="window.location.href='http://localhost:8080/login';">
+          Volver al login
+        </button> --}}
+
+        <p class="message">Wanna go Back?<a href="http://localhost:8080/login">Return to Login</a></p>
+
+    </form>
+  </div>
+</div>

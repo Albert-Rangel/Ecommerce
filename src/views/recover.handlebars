@@ -1,0 +1,31 @@
+<div class="recover-page">
+  <div class="form">
+    <h2>Recover Password Form</h2>
+    <form action="http://localhost:8080/api/Recover/resetpassword" method="post">
+      <div disabled="true">
+        <label for="exampleInputEmail1" class="form-label">Token</label>
+        <input type="text" name="token_"  class="form-control p-2" id="token_">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nueva contraseña</label>
+        <input type="password"  name="password" class="form-control p-2" id="password">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Repite la contraseña</label>
+        <input type="password" name="password2" class="form-control p-2" id="password2">
+      </div>
+      <button type="submit" id="btnSend">Cambiar Contraseña</button>
+      <p class="message">Wanna go Back?<a href="http://localhost:8080/login">Return to Login</a></p>
+
+    </form>
+  </div>
+</div>
+
+
+<script>
+  const token = new URLSearchParams(window.location.search).get('token');
+  let token_ = document.getElementById("token_");
+  token_.setAttribute('value', token);
+
+</script>
+
