@@ -125,21 +125,11 @@ export const obtainUsers = async (req, res) => {
 export const deleteUsersLateConn = async (req, res) => {
 
     try {
-        console.log(" userController/deleteUsersLateConn")
-
         let answer = await UsersManager.deleteUsersLateConn()
-        // console.log("answer")
-        // console.log(answer)
-
-        // const arrayAnswer = ManageAnswer(answer)
-
-        // req.session.user.role = arrayAnswer[1]
-
-        // res.redirect("/UploaderView")
         res.send(answer)
 
     } catch (error) {
-        logger.error("Error en userController/obtainUsers: " + error)
+        logger.error("Error en userController/deleteUsersLateConn: " + error)
         // return swWeb ? error : res.status(500).deleteUsersLateConn({
         //     status: "500",
         //     message: `Se ha arrojado una exepcion: error`

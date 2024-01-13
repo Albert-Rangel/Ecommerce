@@ -21,3 +21,9 @@ error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
 2024-01-12T02:03:55.445Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined
 2024-01-12T02:05:09.340Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined
 2024-01-12T02:05:51.996Z [logs] error: Error en userController/obtainUsers: ReferenceError: halfHourInMilliseconds is not defined
+2024-01-13T16:24:44.082Z [logs] error: Error en userController/obtainUsers: ReferenceError: userModel is not defined
+2024-01-13T16:41:26.016Z [logs] error: Error en userController/obtainUsers: TypeError: userModel.find(...).toArray is not a function
+2024-01-13T17:16:45.682Z [logs] error: Error en userController/deleteUsersLateConn: Error: Can't use $mt with Date.
+2024-01-13T18:56:42.740Z [logs] error: Error en userController/deleteUsersLateConn: ReferenceError: string is not defined
+2024-01-13T19:50:00.606Z [logs] error: Error en userController/deleteUsersLateConn: ReferenceError: pid is not defined
+2024-01-13T19:52:16.888Z [logs] error: Error en userController/deleteUsersLateConn: ReferenceError: Cannot access 'user' before initialization

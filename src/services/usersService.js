@@ -5,6 +5,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import __dirname from '../utils.js';
 import userdto from '../dto/userdto.js'
+import moment from 'moment';
+import emailsService from '../services/emailService.js';
+const emailService = new emailsService()
 export default class usersService {
 
     async changeRol(uid) {
@@ -71,7 +74,6 @@ export default class usersService {
             return `ERR|Error generico. Descripcion :${error}`
         }
     }
-
 
     async verifyProductPermission(uid, pid) {
         try {
@@ -208,21 +210,43 @@ export default class usersService {
 
         return newListUser
     }
-    
-    async deleteUsersLateConn() {
-        
-        let user = await userModel.find();
 
-        if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro ningun usuario en base de datos.`;
+    async obtainusersToDelte() {
+        //Find users with lastConnection less than 10 minutes ago:
+        let TEN_MINUTES = moment().subtract(10, 'minutes').toDate();
 
-        user.forEach(a => {
+        const query = { lastConnection: { $gte: TEN_MINUTES } };
 
-            console.log(a.firstname)
-            let dtouser = userdto.getUserInputFrom(a)
-            newListUser.push(dtouser)
-        })
+        // Retrieve those users:
+        const users = await userModel.find(query).exec();
 
-        return newListUser
+        // console.log("Retrieved users:", users);
+
+        if (!users || users == null || Object.keys(users).length === 0) return `E02|No se encontro ningun usuario que se halla conectado hace 10 minutos o menos.`;
+
+        return users
+    }
+
+    async deleteUsersLateConn(answer) {
+
+        for (const user of answer) {
+            const user_ = await userModel.find({ _id: user._id });
+
+            let emailHTMLTemplate  = `
+            <form>
+              <div>
+                <label>Hola ${user_[0].email}</label>
+                <br>
+                <h1>Tu cuenta ha sido eliminada por falta de uso </h1>
+              </div>
+            </form>
+            `;
+            await emailService.sendEmailNotification(user_[0].firstname  + " " + user_[0].lastname, 'Eliminacion de cuenta ', emailHTMLTemplate);
+            await userModel.deleteOne({ _id: user._id });
+            return 'SUC|El usuario fue eliminado'
+          }
+
+        return answer
     }
 
     async updateUserDocuments(uid) {

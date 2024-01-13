@@ -1,7 +1,7 @@
 class userDTO {
     static getUserInputFrom = (user) => {
-        console.log("user llego al dtoooooo")
-        console.log(user)
+        // console.log("user llego al dtoooooo")
+        // console.log(user)
         
         let objectId_ = user.cart[0]._id
         

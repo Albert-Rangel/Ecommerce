@@ -3,6 +3,7 @@ import { logger } from '../utils/logger.js';
 
 export default class emailService {
 
+    //Aqui habria que sustituir por tu usuario en los metodos de envios de correo
     async sendEmail(tickect) {
 
         try {
@@ -48,7 +49,7 @@ export default class emailService {
     async sendEmailRecover(email, subject, html) {
 
         try {
-            //Gabreiel por aca te comento, yo habia pensado en esta funcion que dinamicamente
+            //Gabriel por aca te comento, yo habia pensado en esta funcion que dinamicamente
             //recibiera el email a quien quiere enviarselo por eso es que lo recibo,
             //sin embargo se lo estoy cableando a mi correo de ethereal porque no  puedo enviar correos a 
             //otras plataformas solo a mi cuenta.
@@ -80,6 +81,43 @@ export default class emailService {
             return `ERR|Error generico. Descripcion :${error}`
         }
     }
+
+    async sendEmailNotification( subject, text, html) {
+
+        try {
+            //Gabriel por aca te comento, yo habia pensado en esta funcion que dinamicamente
+            //recibiera el email a quien quiere enviarselo por eso es que lo recibo,
+            //sin embargo se lo estoy cableando a mi correo de ethereal porque no  puedo enviar correos a 
+            //otras plataformas solo a mi cuenta.
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.ethereal.email',
+                port: 587,
+                auth: {
+                    user: 'claudie.funk69@ethereal.email',
+                    pass: '77VaKZY8tzXPWsqQuK'
+                }
+            });
+
+            var message = {
+                from: "sender@server.com",
+                // to: email,
+                to: "claudie.funk69@ethereal.email",
+                subject: `${subject}`,
+                text: `${text}`,
+                html: `${html}`,
+            };
+
+            await transporter.sendMail(message);
+
+            return "SUC|hola se envio"
+
+        } catch (error) {
+            logger.error("Error en emailService/sendEmail: " + error)
+
+            return `ERR|Error generico. Descripcion :${error}`
+        }
+    }
+
 
     async getEmailTemplate(data) {
         const { email, token } = data;
