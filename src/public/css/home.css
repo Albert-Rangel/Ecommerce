@@ -1,4 +1,4 @@
-#formProduct {
+#formProduct , #formManager{
   width: 40%;
   background: #04315f;
   padding: 30px;
@@ -47,14 +47,14 @@
   color: white;
 }
 
-#formProduct p {
+#formProduct ,  #formManager p {
   height: 40px;
   text-align: center;
   font-size: 20px;
   line-height: 40px;
   display: flex;
 }
-#formProduct h2 {
+#formProduct ,  #formManager h2 {
   height: 40px;
   text-align: center;
   font-size: 20px;
@@ -82,17 +82,17 @@
   line-height: 40px;
 }
 
-#formProduct a {
+#formProduct ,  #formManager a {
   color: white;
   text-decoration: none;
 }
 
-#formProduct a:hover {
+#formProduct,  #formManager  a:hover {
   color: white;
   text-decoration: underline;
 }
 
-#formProduct .botons {
+#formProduct,  #formManager .botons {
   width: 100%;
   background: #1f53c5;
   border: none;

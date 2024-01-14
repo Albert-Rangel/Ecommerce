@@ -17,6 +17,14 @@ class UserManager {
   async obtainusers() {
     return await UserRepositories.obtainusers();
   }
+
+  async obtainuser(uid) {
+    return await UserRepositories.obtainuser(uid);
+  }
+  async deleteUser(uid) {
+    return await UserRepositories.deleteUser(uid);
+  }
+
    async deleteUsersLateConn() {
     return await UserRepositories.deleteUsersLateConn();
   }

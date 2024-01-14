@@ -43,14 +43,13 @@ export default class usersService {
 
     async verifyUserDocumentation(uid) {
         try {
-            let swbool = 0
 
             const user = await userModel.find({ _id: uid });
 
             if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro el usuario en base de datos.`;
 
             if (user[0].role == "Premium") {
-                console.log("entro en preimum golden tickect")
+                // console.log("entro en preimum golden tickect")
                 return `SUC|` + 'Posee todos los documentos para cambiarse el rol'
             }
             const documents = user[0].documents
@@ -65,9 +64,7 @@ export default class usersService {
 
             if (!allDocumentsFound) {
                 return `E02|` + "No posee todos los documentos necesarios"
-                // return swbool = 1
             }
-            // return swbool = 0
             return `SUC|` + 'Posee todos los documentos para cambiarse el rol'
         } catch (error) {
             logger.error("Error en UseresService/verifyUserDocumentation: " + error)
@@ -189,21 +186,49 @@ export default class usersService {
     }
 
     async obtainUser(uid) {
+
+        const user = await userModel.find({ _id: uid });
+        // console.log("userservice in obtainuser")
+        // console.log(user)
+        if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro el usuario en base de datos.`;
+        return user
+    }
+    async deleteUser(uid) {
+        console.log("deleteUser en el servicio")
+        console.log(uid)
         const user = await userModel.find({ _id: uid });
 
         if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro el usuario en base de datos.`;
-        return user
+
+        console.log("user")
+
+        console.log(user)
+        let emailHTMLTemplate = `
+            <form>
+              <div>
+                <label>Hola ${user[0].email}</label>
+                <br>
+                <h1>Tu cuenta ha sido eliminada por el administrador</h1>
+              </div>
+            </form>
+            `;
+        await emailService.sendEmailNotification(user[0].firstname + " " + user[0].lastname, 'Eliminacion de cuenta ', emailHTMLTemplate);
+        await userModel.deleteOne({ _id: uid});
+        return 'SUC|El usuario fue eliminado'
+
+        // console.log("userservice in obtainuser")
+        // console.log(user)
+        // return user
     }
 
     async obtainusers() {
         var newListUser = []
-        let user = await userModel.find();
+        // let user = await userModel.find();
+        let user = await userModel.find({ role: { $in: ["User", "Premium"] } });
 
         if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro ningun usuario en base de datos.`;
 
         user.forEach(a => {
-
-            console.log(a.firstname)
             let dtouser = userdto.getUserInputFrom(a)
             newListUser.push(dtouser)
         })
@@ -232,7 +257,7 @@ export default class usersService {
         for (const user of answer) {
             const user_ = await userModel.find({ _id: user._id });
 
-            let emailHTMLTemplate  = `
+            let emailHTMLTemplate = `
             <form>
               <div>
                 <label>Hola ${user_[0].email}</label>
@@ -241,10 +266,10 @@ export default class usersService {
               </div>
             </form>
             `;
-            await emailService.sendEmailNotification(user_[0].firstname  + " " + user_[0].lastname, 'Eliminacion de cuenta ', emailHTMLTemplate);
+            await emailService.sendEmailNotification(user_[0].firstname + " " + user_[0].lastname, 'Eliminacion de cuenta ', emailHTMLTemplate);
             await userModel.deleteOne({ _id: user._id });
             return 'SUC|El usuario fue eliminado'
-          }
+        }
 
         return answer
     }

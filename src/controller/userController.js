@@ -41,15 +41,9 @@ export const changeRol = async (req, res) => {
 
     try {
 
-        let uid = req.uid
-        console.log("uid")
-        console.log(uid)
-
+        let uid = req
         let answerDoc = await UsersManager.verifyUserDocumentation(uid)
         const arrayAnswerVerify = ManageAnswer(answerDoc)
-
-        console.log("answerDoc")
-        console.log(answerDoc)
 
         if (arrayAnswerVerify[0] != 200) {
             return answerDoc;
@@ -62,30 +56,15 @@ export const changeRol = async (req, res) => {
 
     } catch (error) {
         logger.error("Error en userController/changeRol: " + error)
-        // return res.status(500).send({
-        //     status: "500",
-        //     message: `Error occured in userController in changeRol`
-        // })
         return 'ERR|Error occured in userController in changeRol'
-        // res.redirect("/products") // crear error form para user
+
     }
 }
 export const uploadFile = async (req, res) => {
 
     try {
-        console.log("entro en el controlador de user uploadFile")
         var uid = req.params.uid
-        console.log("uid" + uid)
-        // if (!req.file) {
-        //  console.log("es nulo")4
-        // }
-
         let answer = await UsersManager.uploadFile(uid)
-
-        // const arrayAnswer = ManageAnswer(answer)
-
-        // req.session.user.role = arrayAnswer[1]
-
         res.redirect("/UploaderView")
 
     } catch (error) {
@@ -100,17 +79,9 @@ export const uploadFile = async (req, res) => {
 export const obtainUsers = async (req, res) => {
 
     try {
-        console.log(" userController/uploadFile")
 
         let answer = await UsersManager.obtainusers()
-        // console.log("answer")
-        // console.log(answer)
 
-        // const arrayAnswer = ManageAnswer(answer)
-
-        // req.session.user.role = arrayAnswer[1]
-
-        // res.redirect("/UploaderView")
         res.send(answer)
 
     } catch (error) {
@@ -122,6 +93,35 @@ export const obtainUsers = async (req, res) => {
     }
 }
 
+export const obtainUsersforsockect = async (req, res) => {
+
+    try {
+
+        let answer = await UsersManager.obtainusers()
+        return answer
+
+    } catch (error) {
+        logger.error("Error en userController/obtainUsers: " + error)
+        return error
+    }
+}
+
+export const obtainUser = async (req, res) => {
+
+    try {
+
+        let uid = req
+        let answer = await UsersManager.obtainuser(uid)
+
+        return answer
+
+    } catch (error) {
+        logger.error("Error en userController/obtainUser: " + error)
+
+        return answer
+    }
+}
+
 export const deleteUsersLateConn = async (req, res) => {
 
     try {
@@ -130,14 +130,30 @@ export const deleteUsersLateConn = async (req, res) => {
 
     } catch (error) {
         logger.error("Error en userController/deleteUsersLateConn: " + error)
-        // return swWeb ? error : res.status(500).deleteUsersLateConn({
-        //     status: "500",
-        //     message: `Se ha arrojado una exepcion: error`
-        // })
+
         return res.status(500).send({
             status: "500",
             message: `Se ha arrojado una exepcion: error`
         })
+
+    }
+}
+
+export const deleteUser = async (req, res) => {
+
+    try {
+
+        let uid = req
+        let answer = await UsersManager.deleteUser(uid)
+        // res.send(answer)
+        return answer
+    } catch (error) {
+        logger.error("Error en userController/deleteUser:" + error)
+        return "ERR|" + error
+        // return res.status(500).send({
+        //     status: "500",
+        //     message: `Se ha arrojado una exepcion: error`
+        // })
 
     }
 }

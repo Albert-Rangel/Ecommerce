@@ -73,7 +73,6 @@ router.get("/UploaderView", async (req, res) => {
     })
 })
 
-
 router.get("/PersonalCart", async (req, res) => {
 
     const cid = req.session.user.cart;
@@ -162,6 +161,13 @@ router.get('/login', publicRoutes, (req, res) => {
     })
 });
 
+router.get('/adminManagerView',permissionsRoutes , (req, res) => {
+    res.render("adminManager", {
+        title: "Admin Manager Form",
+        style: "home.css"
+    })
+});
+
 router.get('/recoverSendEmail', publicRoutes, (req, res) => {
 
     res.render("passwordRecovSendMail", {
@@ -195,7 +201,6 @@ router.get('/signup', publicRoutes, (req, res) => {
         style: "signup.css"
     })
 });
-
 
 router.get('/profile', privateRoutes, (req, res) => {
 

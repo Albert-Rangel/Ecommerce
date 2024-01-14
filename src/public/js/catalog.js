@@ -28,7 +28,7 @@ bttChangeRol.addEventListener("click", (evt) => {
     evt.preventDefault()
     let uid = document.getElementById("uid").innerText;
 
-    socket.emit('changeUserStatus', {
+    socket.emit('changeUseRole', {
         uid
     })
 });

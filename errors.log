@@ -27,3 +27,25 @@ error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
 2024-01-13T18:56:42.740Z [logs] error: Error en userController/deleteUsersLateConn: ReferenceError: string is not defined
 2024-01-13T19:50:00.606Z [logs] error: Error en userController/deleteUsersLateConn: ReferenceError: pid is not defined
 2024-01-13T19:52:16.888Z [logs] error: Error en userController/deleteUsersLateConn: ReferenceError: Cannot access 'user' before initialization
+2024-01-13T22:58:02.864Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongoServerSelectionError: connection <monitor> to 18.233.144.95:27017 closed
+2024-01-13T23:48:46.762Z [logs] error: Error en userController/obtainUser: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T15:16:01.291Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T15:25:47.726Z [logs] error: Error en userController/obtainUser: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T15:32:54.714Z [logs] error: Error en userController/obtainUser: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T15:36:20.275Z [logs] error: Error en userController/obtainUser: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:21:39.508Z [logs] error: Error en userRepositories/obtainusers: CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "users"
+2024-01-14T16:47:25.044Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:47:33.715Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:47:48.209Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:47:56.590Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:48:18.746Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:49:29.263Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:49:36.263Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T16:49:51.501Z [logs] error: Error en userController/obtainUsers: TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T18:15:27.110Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "users"
+2024-01-14T18:17:48.004Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: '' }" (type Object) at path "_id" for model "users"
+2024-01-14T18:19:09.639Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: '' }" (type Object) at path "_id" for model "users"
+2024-01-14T18:19:54.798Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: { uid: '' } }" (type Object) at path "_id" for model "users"
+2024-01-14T18:21:47.547Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: { uid: '65a2f934e21532e53ebfed6b' } }" (type Object) at path "_id" for model "users"
+2024-01-14T18:22:21.527Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: { uid: '65a2f934e21532e53ebfed6b' } }" (type Object) at path "_id" for model "users"
+2024-01-14T18:49:15.872Z [logs] error: Error en userController/deleteUser:TypeError: Cannot read properties of undefined (reading 'send')

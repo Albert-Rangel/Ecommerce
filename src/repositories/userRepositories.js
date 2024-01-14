@@ -10,7 +10,7 @@ class usersRepositories {
     try {
 
       let answer = await UserService.changeRol(uid)
-      console.log("answer " + answer)
+      // console.log("answer " + answer)
       return answer
 
     } catch (error) {
@@ -33,6 +33,33 @@ class usersRepositories {
     }
   }
 
+  async obtainuser(uid) {
+    try {
+
+      let answer = await UserService.obtainUser(uid)
+      // console.log("answer " + answer)
+      return answer
+
+    } catch (error) {
+      logger.error("Error en userRepositories/obtainusers: " + error)
+      return `ERR|Error generico. Descripcion :${error}`
+    }
+  }
+
+  async deleteUser(uid) {
+    try {
+      console.log("deleteUser en el repositorio")
+      console.log(uid)
+      let answer = await UserService.deleteUser(uid)
+      // console.log("answer " + answer)
+      return answer
+
+    } catch (error) {
+      logger.error("Error en userRepositories/deleteUser: " + error)
+      return `ERR|Error generico. Descripcion :${error}`
+    }
+  }
+
   async verifyUserDocumentation(uid) {
     try {
 
@@ -49,10 +76,10 @@ class usersRepositories {
     // Retrieve those users:
     let answer = await UserService.obtainusersToDelte()
 
-    if (typeof answer === 'string')return answer
+    if (typeof answer === 'string') return answer
 
     let answerDelete = await UserService.deleteUsersLateConn(answer)
-    
+
     return answerDelete
   }
 

@@ -12,7 +12,11 @@ import {
 
 }from './controller/productController.js'
 import {
-  changeRol
+  changeRol,
+  obtainUser,
+  obtainUsers,
+  obtainUsersforsockect,
+  deleteUser,
 
 }from './controller/userController.js'
 
@@ -72,9 +76,18 @@ Socketserverio.on('connection', async (socket) => {
 
   const productList = await getProducts({ limit: 20, page: 1, sort: null, query: null });
 
+  let users = await obtainUsersforsockect();
+
   Socketserverio.emit('AllProducts', productList)
 
   Socketserverio.emit('AllProductsCart', productList)
+
+  Socketserverio.emit('updateUSers', users)
+
+  socket.on('obtainUsers', async ( uid ) => {
+    let success = await obtainUsersforsockect();
+    Socketserverio.emit('updateUSers', success)
+  })
 
   socket.on('sendNewProduct', async (newP) => {
     const newProduct = {
@@ -100,11 +113,9 @@ Socketserverio.on('connection', async (socket) => {
     const newProduct = {
       description: !data.description ? undefined : data.description,
       title: !data.title ? undefined : data.title,
-      // price: parseInt(data.price, 10) == NaN? null:parseInt(data.price, 10),
       price: !data.price ? undefined : data.price,
       thumbnail: !data.thumbnail ? undefined : data.thumbnail,
       code: !data.code ? undefined : data.code,
-      // stock: parseInt(data.stock, 10)== NaN? null:parseInt(data.stock, 10),
       stock: !data.stock ? undefined : data.stock,
       status: !data.status ? undefined : data.status,
       category: !data.category ? undefined : data.category,
@@ -116,32 +127,39 @@ Socketserverio.on('connection', async (socket) => {
     Socketserverio.emit('AllProducts', productList)
   })
   
-  socket.on('changeUserStatus', async ({ uid }) => {
-    let success = await changeRol({uid});
+  socket.on('changeUseRole', async (uid) => {
+    let success = await changeRol(uid.uid);
     Socketserverio.emit('changedRole', success)
   })
 
+  socket.on('DeleteUser', async (uid) => {
+    let success = await deleteUser(uid.uid);
+    console.log(success)
+    let success_ = await obtainUsersforsockect();
+    console.log("despues de haber elimnado al usuario buscamos los usuarios restantes")
+    console.log(success_)
+
+    Socketserverio.emit('userDeleted', success_)
+  })
 
   socket.on('functionDeleteProduct', async ({ pid, uid }) => {
     await deleteProduct({ pid, uid });
     const productList = await getProducts({ limit: 20, page: 1, sort: null, query: null });
     Socketserverio.emit('AllProducts', productList)
   })
+
   socket.on('message', async (data) => {
     await messagesModel.create(data)
     const messag = await messagesModel.find().lean()
     Socketserverio.emit('newMessage', messag)
   })
+
   socket.on('obtainCartInfo', async (cid) => {
     const products = await CartsManager.getProductsinCartbyIDviaServicePagination(cid)
     Socketserverio.emit('cartProducts', products)
   })
 
   socket.on('addNewProducttoCart', async ({ pid, cartid, uid }) => {
-    console.log("websockect")
-    console.log(pid)
-    console.log(cartid)
-    console.log(uid)
     const cid = cartid.substr(1, cartid.length - 1);
     const newproductincart = await CartsManager.addCartProductsviaService(pid, cid, uid )
     Socketserverio.emit('newProductinCart', newproductincart)

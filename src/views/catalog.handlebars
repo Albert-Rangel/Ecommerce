@@ -2,7 +2,7 @@
     {{!-- <img src="https://i.pinimg.com/originals/66/79/b6/6679b67c5fb579305d74dadd2029441c.jpg" width="300px"> --}}
 
     <h1> Bienvenid@ {{firstname}} {{lastname}} </h1>
- 
+
     <a href="/logout" class="boton">
         LogOut
     </a>
@@ -13,7 +13,8 @@
     <a href="/PersonalCartStatic" class="boton">
         See your Shooping Cart
     </a>
-    <button id="bttChangeRol" class="boton"> Change Role</button>
+    {{!-- <button id="bttChangeRol" class="boton"> Change Role</button> --}}
+
     <a href="/UploaderView" class="boton">
         Personal Information
     </a>
@@ -26,6 +27,10 @@
     <a href="/UploaderView" class="boton">
         Upload Files
     </a>
+    
+    <a href="/adminManagerView" class="boton">
+        Manage Users Roles
+    </a>
     {{/if}}
 
     {{#if swPremium}}
@@ -35,7 +40,7 @@
     <a href="/realTimeProducts" class="boton">
         Product Managment Section
     </a>
-    <button id="bttChangeRol" class="boton"> Change Role</button>
+    {{!-- <button id="bttChangeRol" class="boton"> Change Role</button> --}}
 
     <a href="/UploaderView" class="boton">
         Personal Information
