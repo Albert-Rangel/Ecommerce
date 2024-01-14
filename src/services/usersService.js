@@ -213,7 +213,7 @@ export default class usersService {
             </form>
             `;
         await emailService.sendEmailNotification(user[0].firstname + " " + user[0].lastname, 'Eliminacion de cuenta ', emailHTMLTemplate);
-        await userModel.deleteOne({ _id: uid});
+        await userModel.deleteOne({ _id: uid });
         return 'SUC|El usuario fue eliminado'
 
         // console.log("userservice in obtainuser")
@@ -237,10 +237,14 @@ export default class usersService {
     }
 
     async obtainusersToDelte() {
+
         //Find users with lastConnection less than 10 minutes ago:
         let TEN_MINUTES = moment().subtract(10, 'minutes').toDate();
 
-        const query = { lastConnection: { $gte: TEN_MINUTES } };
+        const query = {
+            lastConnection: { $gte: TEN_MINUTES },
+            role: { $ne: "Admin" }
+        };
 
         // Retrieve those users:
         const users = await userModel.find(query).exec();
