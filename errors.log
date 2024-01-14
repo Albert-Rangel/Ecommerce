@@ -49,3 +49,12 @@ error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
 2024-01-14T18:21:47.547Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: { uid: '65a2f934e21532e53ebfed6b' } }" (type Object) at path "_id" for model "users"
 2024-01-14T18:22:21.527Z [logs] error: Error en UseresService/verifyUserDocumentation: CastError: Cast to ObjectId failed for value "{ uid: { uid: '65a2f934e21532e53ebfed6b' } }" (type Object) at path "_id" for model "users"
 2024-01-14T18:49:15.872Z [logs] error: Error en userController/deleteUser:TypeError: Cannot read properties of undefined (reading 'send')
+2024-01-14T20:59:14.819Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongoServerSelectionError: getaddrinfo ENOTFOUND ac-ity2dxe-shard-00-00.6lrddnh.mongodb.net
+2024-01-14T21:00:54.273Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:01:18.026Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:01:51.033Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:04:47.029Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:08:23.036Z [logs] error: Error en ProductsService/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:12:24.288Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:13:26.549Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-14T21:13:33.022Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: ReferenceError: consol is not defined

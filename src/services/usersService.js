@@ -74,8 +74,8 @@ export default class usersService {
 
     async verifyProductPermission(uid, pid) {
         try {
+            
             //obtener el email y el role del usuario logeado
-
             const user = await userModel.find({ _id: uid });
             const role = user[0].role
 

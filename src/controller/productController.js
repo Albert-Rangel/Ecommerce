@@ -42,7 +42,6 @@ function ManageAnswer(answer) {
 
 export const getProducts = async (req, res) => {
   try {
-    console.log("entro")
     let limit = 0;
     let page = 0
     let sort_ = null
@@ -218,6 +217,8 @@ export const updateProduct = async (req, res) => {
   }
 }
 export const deleteProduct = async (req, res) => {
+
+  console.log("entro en deleteProduct en productcontroller")
   let swWeb = false
   try {
     let pid = 0
@@ -233,7 +234,10 @@ export const deleteProduct = async (req, res) => {
       uid = req.query.uid
     }
 
+
     var swSuccess = await UsersService.verifyProductPermission(uid, pid)
+
+    
 
     if (!swSuccess) {
 
@@ -244,6 +248,11 @@ export const deleteProduct = async (req, res) => {
     }
 
     let answer = await ProductsManager.deletProductviaService({ _id: pid });
+
+    console.log("respuesta de la eliminacion")
+    console.log(answer)
+
+
     const arrayAnswer = ManageAnswer(answer)
     return swWeb ? swSuccess : res.status(arrayAnswer[0]).send({
       status: arrayAnswer[0],

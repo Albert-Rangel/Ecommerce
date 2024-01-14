@@ -1,7 +1,9 @@
 
-import { productsModel } from '../dao/models/products.model.js';
-import { logger } from '../utils/logger.js';
 
+import { productsModel } from '../dao/models/products.model.js';
+import emailService from '../services/emailService.js';
+import { logger } from '../utils/logger.js';
+const EmailService = new emailService()
 class productRepositories {
 
     async addProductviaService(ObjectProduct) {
@@ -42,6 +44,7 @@ class productRepositories {
 
     async getProductWpaginviaService(limit, page, sort_, query) {
         try {
+            
             let key = "";
             let value = "";
             let products;
@@ -73,7 +76,7 @@ class productRepositories {
             return products
 
         } catch (error) {
-            logger.error("Error en ProductsService/getProductWpaginviaService: " + error)
+            logger.error("Error en ProductsRepositories/getProductWpaginviaService: " + error)
 
             return `ERR|Error generico. Descripcion :${error}`
         }
@@ -97,10 +100,11 @@ class productRepositories {
     async updateProductviaService(pid, product) {
         try {
 
+            console.log("entro en productsrepositories")
             const { title, description, price, thumbnail, code, stock, status, category, owner } = product;
 
             const found = await productsModel.find({ _id: pid });
-            
+
             if (found == undefined || Object.keys(found).length === 0) return `E02|El producto con el id ${pid} no se encuentra agregado.`;
 
             for (const [key, value] of Object.entries(product)) {
@@ -133,9 +137,34 @@ class productRepositories {
 
     async deletProductviaService(pid) {
         try {
-            const found = await productsModel.find({ _id: pid });
+            console.log("entro en el deletProductviaService de porductrepositories")
+
+            console.log("pid")
+            console.log(pid)
+
+            const found = await productsModel.find({ _id: pid._id });
+
+
+            console.log("found")
+            console.log(found)
+
+            let productOwner = found[0].owner
+            console.log(productOwner)
+
             if (found == undefined || Object.keys(found).length === 0) return `E02|El producto con el id ${pid._id} no se encuentra agregado.`;
-            await productsModel.deleteOne({ _id: pid });
+            await productsModel.deleteOne({ _id: pid._id });
+
+            let emailHTMLTemplate = `
+            <form>
+              <div>
+                <label>Hola ${productOwner}</label>
+                <br>
+                <h1>Tu producto ${found[0]._id} ha sido eliminado</h1>
+              </div>
+            </form>
+            `;
+            await EmailService.sendEmailNotification(productOwner, 'Eliminacion de producto ', emailHTMLTemplate);
+
 
             return `SUC|El producto con el id ${pid._id} fue eliminado.`
         }

@@ -1,15 +1,29 @@
-#formProduct , #formManager{
+#formProduct {
   width: 40%;
   background: #04315f;
   padding: 30px;
   margin: auto;
   margin-top: 100px;
-  margin-bottom:60px;
+  margin-bottom: 60px;
   border-radius: 4px;
   font-family: 'calibri';
   color: white;
   box-shadow: 7px 13px 37px #000;
 }
+
+#formManager {
+  width: 40%;
+  background: #04315f;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+}
+
 
 #formProduct h4 {
   font-size: 22px;
@@ -22,7 +36,7 @@
   padding: 30px;
   margin: auto;
   margin-top: 100px;
-  margin-bottom:60px;
+  margin-bottom: 60px;
   border-radius: 4px;
   font-family: 'calibri';
   color: white;
@@ -47,19 +61,36 @@
   color: white;
 }
 
-#formProduct ,  #formManager p {
+#formProduct p {
   height: 40px;
   text-align: center;
   font-size: 20px;
   line-height: 40px;
   display: flex;
 }
-#formProduct ,  #formManager h2 {
+
+#formManager p {
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  display: flex;
+}
+
+#formProduct h2 {
   height: 40px;
   text-align: center;
   font-size: 20px;
   line-height: 40px;
 }
+
+#formManager h2 {
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+}
+
 
 #formupdProduct p {
   height: 40px;
@@ -68,6 +99,7 @@
   line-height: 40px;
   display: flex;
 }
+
 #formupdProduct h2 {
   height: 40px;
   text-align: center;
@@ -75,24 +107,47 @@
   line-height: 40px;
 }
 
- h2 label{
+h2 label {
   height: 20px;
   text-align: center;
   font-size: 20px;
   line-height: 40px;
 }
 
-#formProduct ,  #formManager a {
+#formProduct a {
   color: white;
   text-decoration: none;
 }
 
-#formProduct,  #formManager  a:hover {
+#formManager a {
+  color: white;
+  text-decoration: none;
+}
+
+#formProduct a:hover {
   color: white;
   text-decoration: underline;
 }
 
-#formProduct,  #formManager .botons {
+
+#formManager a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
+
+#formProduct .botons {
+  width: 100%;
+  background: #1f53c5;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+#formManager .botons {
   width: 100%;
   background: #1f53c5;
   border: none;
@@ -132,10 +187,10 @@
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
-   
- }
 
- .botons {
+}
+
+.botons {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -147,15 +202,17 @@
   margin-top: 15px;
   letter-spacing: 2px
 }
+
 .botons:hover {
   background: #289bb8;
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px #289bb8,
-              0 0 25px #289bb8,
-              0 0 50px #289bb8,
-              0 0 100px #289bb8;
+    0 0 25px #289bb8,
+    0 0 50px #289bb8,
+    0 0 100px #289bb8;
 }
+
 body {
   background: rgb(238, 174, 202);
   background: -moz-linear-gradient(138deg, rgba(238, 174, 202, 1) 0%, rgba(35, 159, 245, 1) 100%);

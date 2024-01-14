@@ -12,7 +12,7 @@ async function updateUserRole(success) {
     let content = success.split("|")
     if (content[0] != 'SUC') {
         window.alert(content)
-    }else{
+    } else {
         window.alert("Su cambio de rol ha sido exitodo. Verificar en su Informacion personal")
     }
 }
@@ -114,7 +114,8 @@ function updateCartProductsList(CartProductsList) {
     catalogDiv.innerHTML = contenidocambiante
 }
 
-const botonesCatalogo = async (CatalogList) => {
+function botonesCatalogo(CatalogList) {
+    console.log(CatalogList)
     for (const catalogo of CatalogList.docs) {
         const botonId = `btn-catalogo-${catalogo.id}`;
         const botonNodo = document.getElementById(botonId);

@@ -143,6 +143,7 @@ Socketserverio.on('connection', async (socket) => {
   })
 
   socket.on('functionDeleteProduct', async ({ pid, uid }) => {
+    console.log("entro en el serverside")
     await deleteProduct({ pid, uid });
     const productList = await getProducts({ limit: 20, page: 1, sort: null, query: null });
     Socketserverio.emit('AllProducts', productList)
@@ -160,6 +161,7 @@ Socketserverio.on('connection', async (socket) => {
   })
 
   socket.on('addNewProducttoCart', async ({ pid, cartid, uid }) => {
+    console.log("entro en addNewProducttoCart en el servidor ")
     const cid = cartid.substr(1, cartid.length - 1);
     const newproductincart = await CartsManager.addCartProductsviaService(pid, cid, uid )
     Socketserverio.emit('newProductinCart', newproductincart)
