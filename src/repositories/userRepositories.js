@@ -100,6 +100,22 @@ class usersRepositories {
 
     }
   }
+
+
+
+  async updatelastConnection(uid) {
+    try {
+      let answer = await UserService.updatelastConnection(uid)
+      return answer
+
+    } catch (error) {
+      logger.error("Error en userRepositories/uploadFile: " + error)
+      return `ERR|Error generico. Descripcion :${error}`
+
+    }
+  }
+
+
 }
 export default usersRepositories
 

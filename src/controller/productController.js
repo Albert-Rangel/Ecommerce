@@ -3,12 +3,10 @@
 // import productsService from '../services/productsService.js';
 import productsManager from '../dao/Mongo/ProductManager.js';
 import usersService from '../services/usersService.js';
-
 import { logger } from '../utils/logger.js';
 
 const ProductsManager = new productsManager()
 const UsersService = new usersService()
-
 
 function ManageAnswer(answer) {
   const arrayAnswer = []
@@ -64,10 +62,8 @@ export const getProducts = async (req, res) => {
     }
 
     const products = await ProductsManager.getProductWpaginviaService(limit, page, sort_, query)
-
     const isString = (value) => typeof value === 'string';
     if (isString(products)) {
-      console.log("entro en string")
       const arrayAnswer = ManageAnswer(products)
       return res.status(arrayAnswer[0]).send({
         status: arrayAnswer[0],
@@ -217,8 +213,6 @@ export const updateProduct = async (req, res) => {
   }
 }
 export const deleteProduct = async (req, res) => {
-
-  console.log("entro en deleteProduct en productcontroller")
   let swWeb = false
   try {
     let pid = 0
@@ -228,17 +222,11 @@ export const deleteProduct = async (req, res) => {
       swWeb = true
       pid = req.pid
       uid = req.uid
-
     } else {
       pid = req.params.pid
       uid = req.query.uid
     }
-
-
     var swSuccess = await UsersService.verifyProductPermission(uid, pid)
-
-    
-
     if (!swSuccess) {
 
       return swWeb ? swSuccess : res.status(arrayAnswer[0]).send({

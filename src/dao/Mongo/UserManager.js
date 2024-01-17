@@ -28,6 +28,10 @@ class UserManager {
    async deleteUsersLateConn() {
     return await UserRepositories.deleteUsersLateConn();
   }
+
+  async updatelastConnection(uid) {
+    return await UserRepositories.updatelastConnection(uid);
+  }
   
 }
 
