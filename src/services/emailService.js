@@ -1,9 +1,10 @@
 import nodemailer from 'nodemailer'
 import { logger } from '../utils/logger.js';
+import config from "../config/env.config.js"
 
 export default class emailService {
 
-    //Aqui habria que sustituir por tu usuario en los metodos de envios de correo
+    //hay que sustituir en este archivo con tus datos de ethereal, para poder enviar todps los correos
     async sendEmail(tickect) {
 
         try {
@@ -15,8 +16,8 @@ export default class emailService {
                 host: 'smtp.ethereal.email',
                 port: 587,
                 auth: {
-                    user: 'claudie.funk69@ethereal.email',
-                    pass: '77VaKZY8tzXPWsqQuK'
+                    user: config.emailUser,
+                    pass:  config.emailPass
                 }
             });
 
@@ -57,8 +58,8 @@ export default class emailService {
                 host: 'smtp.ethereal.email',
                 port: 587,
                 auth: {
-                    user: 'claudie.funk69@ethereal.email',
-                    pass: '77VaKZY8tzXPWsqQuK'
+                    user: config.emailUser,
+                    pass:  config.emailPass
                 }
             });
 
@@ -85,16 +86,12 @@ export default class emailService {
     async sendEmailNotification( subject, text, html) {
 
         try {
-            //Gabriel por aca te comento, yo habia pensado en esta funcion que dinamicamente
-            //recibiera el email a quien quiere enviarselo por eso es que lo recibo,
-            //sin embargo se lo estoy cableando a mi correo de ethereal porque no  puedo enviar correos a 
-            //otras plataformas solo a mi cuenta.
             const transporter = nodemailer.createTransport({
                 host: 'smtp.ethereal.email',
                 port: 587,
                 auth: {
-                    user: 'claudie.funk69@ethereal.email',
-                    pass: '77VaKZY8tzXPWsqQuK'
+                    user: config.emailUser,
+                    pass:  config.emailPass
                 }
             });
 
@@ -117,7 +114,6 @@ export default class emailService {
             return `ERR|Error generico. Descripcion :${error}`
         }
     }
-
 
     async getEmailTemplate(data) {
         const { email, token } = data;

@@ -21,4 +21,6 @@ export default{
     adminName:process.env.ADMIN_NAME,
     adminPassword:process.env.ADMIN_PASSWORD,
     enviroment: process.env.ENVIROMENT,
+    emailUser: process.env.EMAILUSER,
+    emailPass: process.env.EMAILPASSWORD,
 }
