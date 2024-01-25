@@ -2,9 +2,14 @@
     <p>
         Cart Id :{{cid}}
     </p>
-    <a href="/api/carts/cartPurchase" class="boton">
+       <div id="cid" hidden> {{cid}}</div>
+       <div id="email" hidden> {{email}}</div>
+    {{!-- <a href="/api/carts/cartPurchase" class="boton">
         Buy your products
-    </a>
+    </a> --}}
+     <button  id ="buybotton" class="boton">
+        Buy your products
+    </button>
     
     <a href="http://localhost:8080/products" class="boton">Return to Main Catalog</a>
 
@@ -30,3 +35,6 @@
         {{/each}}
     </div>
 </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/cartStatic.js"></script>

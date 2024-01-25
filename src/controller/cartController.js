@@ -367,20 +367,29 @@ export const updateCartProducts = async (req, res) => {
 }
 export const purchaseCart = async (req, res) => {
   try {
+    console.log("lushadahkdjsh")
+    console.log(req)
     let cid = 0
     let email = ""
     let swWeb = false
     if (req.params != undefined && req.session.user == undefined) {
       console.log("entro en thunderclient")
+      swWeb = false
       cid = req.params.cid
       email = "claudie.funk69@ethereal.email"
     } else {
       console.log("entro en web")
-      if (req.params.cid != undefined) { swWeb = false } else { swWeb = true }//esto es en caso que sea swagger es false si es la web es true
+      // if (req.params.cid != undefined) { swWeb = false } else { swWeb = true }//esto es en caso que sea swagger es false si es la web es true
+      swWeb = true
 
-      cid = req.session.user.cart
-      email = req.session.user.email
+      // cid = req.session.user.cart
+      // email = req.session.user.email
+
+      cid = req.obj.cid.slice(1);;
+      email =  req.obj.email.slice(1);
     }
+    console.log(cid)
+    console.log(email)
 
     let totalsum = 0
     //obtener los productos dentro del carrito
@@ -453,7 +462,7 @@ export const purchaseCart = async (req, res) => {
           status: arrayAnswer[0],
           message: arrayAnswer[1]
         }
-       
+
         return swWeb ? error : res.send(error);
 
       }
@@ -467,14 +476,14 @@ export const purchaseCart = async (req, res) => {
         }
         let eliminateProdinCart = await deleteCartProduct(deletebject)
 
-        
+
         if (isString(eliminateProdinCart) && eliminateProdinCart.substring(0, 3) != "SUC") {
           const arrayAnswer = ManageAnswer(eliminateProdinCart)
           const error = {
             status: arrayAnswer[0],
             message: arrayAnswer[1]
           }
-        
+
           return swWeb ? error : res.send(error);
 
         }
@@ -485,10 +494,10 @@ export const purchaseCart = async (req, res) => {
           cid,
           finalqtt
         }
-       
+
         //Actualizamos la quantity del producto en el carrito
         let updateProdInCart = await updateCartProductQuantity(upqttobject)
-        
+
 
         if (isString(updateProdInCart) && updateProdInCart.substring(0, 3) != "SUC") {
           const arrayAnswer = ManageAnswer(updateProdInCart)
@@ -496,7 +505,7 @@ export const purchaseCart = async (req, res) => {
             status: arrayAnswer[0],
             message: arrayAnswer[1]
           }
-          
+
           return swWeb ? error : res.send(error);
 
         }
@@ -517,13 +526,14 @@ export const purchaseCart = async (req, res) => {
         status: arrayAnswer[0],
         message: arrayAnswer[1]
       }
-     
+
 
       return swWeb ? error : res.send(error);
     }
-    
 
-    return swWeb ? res.redirect('/products') : res.send({ status: 200, message: "ha sido enviado el correo" });
+
+    // return swWeb ? res.redirect('/products') : res.send({ status: 200, message: "ha sido enviado el correo" });
+    return swWeb ?emailSend : res.send({ status: 200, message: "ha sido enviado el correo" });
 
   }
   catch (error) {

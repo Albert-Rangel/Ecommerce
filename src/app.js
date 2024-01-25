@@ -18,8 +18,11 @@ import {
   obtainUsersforsockect,
   deleteUser,
 
-}from './controller/userController.js'
+}from './controller/userController.js' 
+import {
+  purchaseCart
 
+}from './controller/cartController.js'
 import ChatsRoutes from './router/chat.routes.js'
 import MockRoutes from './router/mock.routes.js'
 import PasswordRoutes from './router/password.routes.js'
@@ -125,6 +128,14 @@ Socketserverio.on('connection', async (socket) => {
     await updateProduct({ pid, newProduct });
     const productList = await getProducts({ limit: 50, page: 1, sort: null, query: null });
     Socketserverio.emit('AllProducts', productList)
+  })
+
+  socket.on('buyprod', async (obj) => {
+    console.log(obj)
+    let success = await purchaseCart({obj});
+    console.log("respuesatav")
+    console.log(success)
+    Socketserverio.emit('productbought', success)
   })
   
   socket.on('changeUseRole', async (uid) => {

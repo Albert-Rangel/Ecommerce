@@ -127,12 +127,14 @@ export const PersonalCart = async (req, res) => {
 export const PersonalCartStatic = async (req, res) => {
     try {
         const cid = req.session.user.cart;
+        const email = req.session.user.email
         const allProducts = await CartManager.getProductsinCartbyIDviaService(cid)
         res.render("cartStatic", {
             title: "Personal Shooping Cart",
             style: "catalog.css",
             cid: cid,
             allProducts: allProducts,
+            email: email,
         })
     } catch (error) {
         logger.error("Error en viewsController/PersonalCartStatic: " + error)

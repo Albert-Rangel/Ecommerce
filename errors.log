@@ -58,3 +58,16 @@ error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
 2024-01-14T21:12:24.288Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
 2024-01-14T21:13:26.549Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
 2024-01-14T21:13:33.022Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: ReferenceError: consol is not defined
+2024-01-25T22:48:37.082Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'cid')
+2024-01-25T22:49:21.960Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'cid')
+2024-01-25T22:50:13.398Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'user')
+2024-01-25T22:50:42.015Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'user')
+2024-01-25T22:51:22.750Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-25T22:52:07.752Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'user')
+2024-01-25T22:55:15.662Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-25T22:57:47.508Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'user')
+2024-01-25T22:58:43.706Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'user')
+2024-01-25T22:59:56.571Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'cid')
+2024-01-25T23:02:53.080Z [logs] error: Error en CartService/getProductsinCartbyIDviaService: CastError: Cast to ObjectId failed for value " 6599e09155d45f390e87d199" (type string) at path "_id" for model "carts"
+2024-01-25T23:05:58.657Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'redirect')
+2024-01-25T23:14:48.305Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
