@@ -1,5 +1,6 @@
 import { userModel } from '../dao/models/user.model.js';
 import { productsModel } from '../dao/models/products.model.js';
+import { cartsModel } from '../dao/models/carts.model.js';
 import { logger } from '../utils/logger.js';
 import fs from 'fs/promises';
 import path from 'path';
@@ -74,7 +75,7 @@ export default class usersService {
 
     async verifyProductPermission(uid, pid) {
         try {
-            
+
             //obtener el email y el role del usuario logeado
             const user = await userModel.find({ _id: uid });
             const role = user[0].role
@@ -194,13 +195,13 @@ export default class usersService {
         return user
     }
     async deleteUser(uid) {
-        console.log("deleteUser en el servicio")
-        console.log(uid)
+
         const user = await userModel.find({ _id: uid });
 
         if (!user || user == null || Object.keys(user).length === 0) return `E02|No se encontro el usuario en base de datos.`;
-
-        console.log("user")
+        let cid = user[0].cart
+        const value = cid[0]._id;
+        console.log(value)
 
         console.log(user)
         let emailHTMLTemplate = `
@@ -214,6 +215,8 @@ export default class usersService {
             `;
         await emailService.sendEmailNotification(user[0].firstname + " " + user[0].lastname, 'Eliminacion de cuenta ', emailHTMLTemplate);
         await userModel.deleteOne({ _id: uid });
+        await cartsModel.deleteOne({ _id: value })
+
         return 'SUC|El usuario fue eliminado'
 
         // console.log("userservice in obtainuser")

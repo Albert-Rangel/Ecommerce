@@ -162,7 +162,7 @@ export const updatelastConnection = async (req, res) => {
 
     try {
 
-        console.log("probar que funcione el updatelast connection")
+       
         var uid = req.params.uid
         let answer = await UsersManager.updatelastConnection(uid)
         return answer

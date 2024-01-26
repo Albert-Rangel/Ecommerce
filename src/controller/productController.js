@@ -70,12 +70,7 @@ export const getProducts = async (req, res) => {
         message: arrayAnswer[1]
       })
     }
-    // console.log("products")
-    // console.log(products)
-
-    console.log(swWeb)
-    // swWeb = false
-    // console.log(swWeb)
+   
 
     return swWeb ? products : res.send(products);
 
@@ -178,24 +173,21 @@ export const updateProduct = async (req, res) => {
     let updatedproduct = {}
 
     if (req.params == undefined) {
-      console.log("entro en el if")
+     
       swINtern = true
       if (req.newProduct != undefined) {
-        console.log("entro en el if 1")
+       
         pid = req.pid;
         updatedproduct = req.newProduct; // cuando actualiza el producto por metod de update product
       } else {
-        console.log("entro en el if 2")
+      
         pid = req.productToUpdate._id
         updatedproduct = req.productToUpdate // cuando actualiza el stock que envia el correo
       }
     } else {
-      console.log("entro en el else")
       pid = req.params.pid
       updatedproduct = req.body
     }
-
-
 
     let answer = await ProductsManager.updateProductviaService(pid, updatedproduct);
     const arrayAnswer = ManageAnswer(answer)
@@ -236,10 +228,6 @@ export const deleteProduct = async (req, res) => {
     }
 
     let answer = await ProductsManager.deletProductviaService({ _id: pid });
-
-    console.log("respuesta de la eliminacion")
-    console.log(answer)
-
 
     const arrayAnswer = ManageAnswer(answer)
     return swWeb ? swSuccess : res.status(arrayAnswer[0]).send({

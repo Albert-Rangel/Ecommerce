@@ -71,3 +71,4 @@ error: error {"label":"logs","timestamp":"2023-11-26T19:21:44.746Z"}
 2024-01-25T23:02:53.080Z [logs] error: Error en CartService/getProductsinCartbyIDviaService: CastError: Cast to ObjectId failed for value " 6599e09155d45f390e87d199" (type string) at path "_id" for model "carts"
 2024-01-25T23:05:58.657Z [logs] error: Error en CartManager/purchaseCart: TypeError: Cannot read properties of undefined (reading 'redirect')
 2024-01-25T23:14:48.305Z [logs] error: Error en ProductsRepositories/getProductWpaginviaService: MongooseError: Operation `products.countDocuments()` buffering timed out after 10000ms
+2024-01-25T23:58:56.579Z [logs] error: Error en userRepositories/deleteUser: ReferenceError: data is not defined

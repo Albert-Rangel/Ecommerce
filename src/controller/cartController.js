@@ -68,24 +68,15 @@ export const addCartProducts = async (req, res) => {
     let uid = 0
 
     if (req.params != undefined) {
-      console.log("entro en diferente de web")
-
       pid = req.params.pid
       cid = req.params.cid
       uid = req.query.uid
     } else {
       swWeb = true
-      console.log("entro en web")
       cid = req.cid
       pid = req.pid
       uid = req.uid
     }
-
-    console.log("CART CONTROLLER ")
-    //console.log(req)//SI FUNCIONA ES MUY LARGO
-    console.log(cid)
-    console.log(pid)
-    console.log(uid)
 
     const answer = await CartsManager.addCartProductsviaService(pid, cid, uid)
     const arrayAnswer = ManageAnswer(answer)
@@ -367,18 +358,14 @@ export const updateCartProducts = async (req, res) => {
 }
 export const purchaseCart = async (req, res) => {
   try {
-    console.log("lushadahkdjsh")
-    console.log(req)
     let cid = 0
     let email = ""
     let swWeb = false
     if (req.params != undefined && req.session.user == undefined) {
-      console.log("entro en thunderclient")
       swWeb = false
       cid = req.params.cid
       email = "claudie.funk69@ethereal.email"
     } else {
-      console.log("entro en web")
       // if (req.params.cid != undefined) { swWeb = false } else { swWeb = true }//esto es en caso que sea swagger es false si es la web es true
       swWeb = true
 
@@ -388,8 +375,6 @@ export const purchaseCart = async (req, res) => {
       cid = req.obj.cid.slice(1);;
       email =  req.obj.email.slice(1);
     }
-    console.log(cid)
-    console.log(email)
 
     let totalsum = 0
     //obtener los productos dentro del carrito
@@ -526,8 +511,6 @@ export const purchaseCart = async (req, res) => {
         status: arrayAnswer[0],
         message: arrayAnswer[1]
       }
-
-
       return swWeb ? error : res.send(error);
     }
 
