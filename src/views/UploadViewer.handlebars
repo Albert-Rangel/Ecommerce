@@ -125,31 +125,31 @@
     <a href="/logout" class="boton">
         LogOut
     </a>
-    <a href="http://localhost:8080/products" class="boton">Return to Main Catalog</a>
+    <a href="https://ecommerce-production-f895.up.railway.app/products" class="boton">Return to Main Catalog</a>
 </div>
 
 <div class="forms-container">
-    <form action="http://localhost:8080/api/users/{{uid}}/profileFile/documents" method="post"
+    <form action="https://ecommerce-production-f895.up.railway.app/api/users/{{uid}}/profileFile/documents" method="post"
         enctype="multipart/form-data">
         <label for="profileFile">Imagen de perfil usuario</label>
         <input type="file" id="profileFile" name="profileFile" accept=".png, .jpg .jpeg .pdf">
         <button type="submit" value="submit">Enviar foto de perfil</button>
     </form>
 
-    <form action="http://localhost:8080/api/users/{{uid}}/IDFile/documents" method="post" enctype="multipart/form-data">
+    <form action="https://ecommerce-production-f895.up.railway.app/api/users/{{uid}}/IDFile/documents" method="post" enctype="multipart/form-data">
         <label for="IDFile">Imagen de cedula de identidad</label>
         <input type="file" id="IDFile" name="IDFile" accept=".png, .jpg .jpeg  .pdf">
         <button type="submit" value="submit">Enviar cedula de identidad</button>
     </form>
 
-    <form action="http://localhost:8080/api/users/{{uid}}/BankFile/documents" method="post"
+    <form action="https://ecommerce-production-f895.up.railway.app/api/users/{{uid}}/BankFile/documents" method="post"
         enctype="multipart/form-data">
         <label for="BankFile">Imagen de Comprobante bancario</label>
         <input type="file" id="BankFile" name="BankFile" />
         <button type="submit" value="submit">Enviar comprobante bancario</button>
     </form>
 
-    <form action="http://localhost:8080/api/users/{{uid}}/addressFile/documents" method="post"
+    <form action="https://ecommerce-production-f895.up.railway.app/api/users/{{uid}}/addressFile/documents" method="post"
         enctype="multipart/form-data">
         <label for="addressFile">Imagen de comprobante de domicilioo</label>
         <input type="file" id="addressFile" name="addressFile" />
@@ -157,7 +157,7 @@
     </form>
 
 
-    <form action="http://localhost:8080/api/users/{{uid}}/productsFile/documents" method="post"
+    <form action="https://ecommerce-production-f895.up.railway.app/api/users/{{uid}}/productsFile/documents" method="post"
         enctype="multipart/form-data">
         <label for="productsFile">Imagen de producto</label>
         <input type="file" id="productsFile" name="productsFile" accept=".png, .jpg .jpeg  .pdf">

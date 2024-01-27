@@ -5,7 +5,7 @@ const getCookiesButton = document.getElementById('getCookies');
 const setCookiesButton = document.getElementById('setCookies');
 
 getCookiesButton.addEventListener('click', (e) => {
-  fetch('http://localhost:8080/getCookies')
+  fetch('https://ecommerce-production-f895.up.railway.app/getCookies')
     .then((response) => response.json())
     .then((cookies) => console.log(cookies));
 });
@@ -16,7 +16,7 @@ setCookiesButton.addEventListener('click', (e) => {
     valor: valorInput.value,
   };
 
-  fetch('http://localhost:8080/setCookies', {
+  fetch('https://ecommerce-production-f895.up.railway.app/setCookies', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

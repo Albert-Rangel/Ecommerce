@@ -11,7 +11,7 @@ async function updateMessage(success) {
         window.alert(content)
     } else {
         window.alert("La compra ha sido exitosa. Verifica tu correo para que veas eld etalle")
-        window.location.href = 'http://localhost:8080/products';
+        window.location.href = 'https://ecommerce-production-f895.up.railway.app/products';
     }
 }
 

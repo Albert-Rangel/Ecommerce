@@ -119,7 +119,7 @@ export default class emailService {
         const { email, token } = data;
 
         const emailUser = email.split('@')[0].toString();
-        const url = 'http://localhost:8080/recover';
+        const url = 'https://ecommerce-production-f895.up.railway.app/recover';
 
         return `
         <form>
